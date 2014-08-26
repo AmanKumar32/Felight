@@ -1,0 +1,47 @@
+/*
+*  Program: A program on Method Overloading 
+*  Author : Aman Kumar
+*  Date   : 21th July 2014
+*/
+
+public class Calculator {
+    
+	public int add(int num1,int num2) {
+	     return num1 + num2;
+	
+	}
+	
+    public float add(float num1 , float num2) {
+          return num1 + num2;
+	
+	}	
+    
+ 
+ }
+ 
+ 
+			// Main Section
+ =========================================================================
+ =========================================================================
+ 
+ class Test1 {
+   
+    public static void main(String[] felight) {
+	    Calculator calc  = new Calculator();
+		System.out.println("2 + 3 : "+calc.add(2,3));
+		System.out.println("2.5f + 3.9f : "+calc.add(2.5f,3.9f) );
+	
+	
+	}
+
+
+}
+
+
+				// Output
+===================================================================
+===================================================================
+ 
+ 2 + 3 : 5
+2.5f + 3.9f : 6.4
+ 

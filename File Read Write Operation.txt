@@ -1,0 +1,75 @@
+
+/*
+*	Program : Example Read and Write file Contents.
+*	Author  : Aman Kumar
+*	Date    : 25th July 2014
+*
+*/
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class ReadFileOperation {
+
+	public static void main(String[] args) {
+
+		String fileName = "VenkatPrakash";
+		String line = null;
+		
+		FileReader fileReader;
+		try {
+			fileReader = new FileReader(fileName);
+			BufferedReader obj = new BufferedReader(fileReader);
+			
+			try {
+				while ((line = obj.readLine())!= null)  {
+						System.out.println(line);
+					}
+				obj.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+			catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+				
+	}
+
+}
+
+
+				// Write Operation In files
+============================================================
+============================================================
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class WriteFileOperation {
+
+	public static void main(String[] args) {
+
+		String fileName = "VenkatPrakash";
+		FileWriter obj;
+		try {
+			obj = new FileWriter(fileName);
+			obj.write("soon");
+			obj.write("good");
+			obj.write("very good");
+			
+			obj.close();
+
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
+	}
+
+}

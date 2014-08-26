@@ -1,0 +1,105 @@
+/*
+*	Program : Serialization & DeSerialization of two Objects
+*	Author  : Aman Kumar
+* 	Date	: 30th July 2014
+*/
+
+package serialization;
+
+@SuppressWarnings("serial")
+public class Employee implements java.io.Serializable {
+
+	public String  name;
+	public String address;
+	public transient int SSN;
+	public int number;
+	
+	public void mailCheck(){
+		System.out.println("Mailing a check to " + name + " " + address);		
+		
+	}
+	
+	
+}
+				// Serialization
+========================================================================
+package serialization;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class SerializationDemo {
+
+	public static void main(String[] args) {
+			Employee  e = new Employee();
+			Employee e2 = new Employee();
+			e.name = "Aman Kumar";
+			e.address = "Atiguppe Metro Station";
+			e.SSN = 47896785;
+			e.number = 897198;
+			e2.name = "Venkat sai";
+			e2.address = "Btm Layout";
+			e2.SSN = 25852;
+			e2.number = 852;
+			try {
+				FileOutputStream fileOut = new FileOutputStream("employee.ser");
+				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				out.writeObject(e);
+				out.writeObject(e2);
+				out.close();
+				fileOut.close(); 
+			}catch(IOException i){
+				i.printStackTrace();
+			}
+		
+	}
+
+}
+					//Deserialization
+======================================================================
+
+package serialization;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class DeserializeDemo {
+
+	public static void main(String[] args) {
+
+		Employee e = null;
+		Employee e2 = null;
+		try{
+			FileInputStream fileIn = new FileInputStream("employee.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			e = (Employee) in.readObject();
+			e2 = (Employee) in.readObject();
+			in.close();
+			fileIn.close();
+		} catch(IOException i){
+			i.printStackTrace();
+			return;
+		} catch (ClassNotFoundException c){
+			System.out.println("Employee class not found");
+			c.printStackTrace();
+			return;
+		}
+		System.out.println("Deserialized Employee1...");
+		System.out.println("Name: "+ e.name);
+		System.out.println("Address: "+ e.address);
+		System.out.println("SSN: "+ e.SSN);
+		System.out.println("Number: "+ e.number);
+        
+		System.out.println();
+        
+		System.out.println("Deserialized Employee2...");
+		System.out.println("Name: "+ e2.name);
+		System.out.println("Address: "+ e2.address);
+		System.out.println("SSN: "+ e2.SSN);
+		System.out.println("Number: "+ e2.number);
+        
+	}
+
+}

@@ -1,0 +1,80 @@
+/*
+*	Program : MultiThreading Assignment
+*	Author  : Aman Kumar
+* 	Date	: 6th Aug 2014
+*/
+package MultipleThread;
+
+public class AdditonThreadClass  {
+	
+	static int result;
+	
+	public static void workingThread(){
+		  int num1=10;
+		  int num2=20;
+		if(Thread.currentThread().getName().equals("add")){
+			result=num1+num2;
+			System.out.println(result);
+		}
+		if(Thread.currentThread().getName().equals("multiplyby2")){
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			result *=2;
+			System.out.println(result);
+		}
+		if(Thread.currentThread().getName().equals("multiplyby7")){
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			result *=7;
+			System.out.println(result);
+		}
+		
+	}
+	
+}
+
+						// Main Section
+==================================================================================
+import MultipleThread.AdditonThreadClass;
+
+
+public class Test {
+
+	public static void main(String[] args) {
+		Runnable addObj = new Runnable(){
+			@Override
+			public void run() {
+				AdditonThreadClass.workingThread();
+			}
+			
+		};
+		Runnable multiObj1 = new Runnable(){
+			@Override
+			public void run() {
+				AdditonThreadClass.workingThread();
+			}
+			
+		};
+		Runnable multiObj2 = new Runnable(){
+			@Override
+			public void run() {
+				AdditonThreadClass.workingThread();
+			}
+			
+		};
+		Thread addThread= new Thread(addObj,"add");
+		Thread multiThread1= new Thread(multiObj1,"multiplyby2");
+		Thread multiThread2= new Thread(multiObj2,"multiplyby7");
+
+		addThread.start();
+		multiThread1.start();
+		multiThread2.start();
+	}
+
+}
