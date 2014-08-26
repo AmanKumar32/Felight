@@ -1,0 +1,47 @@
+/*
+* Program : Create a class Employee with one explicit constructor to initialize the members with your 
+			default values and add one more constructor with parameters (make use of this pointer). 
+			Create 5 employee objects and display the employee details.
+* Author  : Aman Kumar
+* Date    : 16th july 2014
+*/
+
+public class Employee{
+int Emp_Id;
+String Name;
+String City;
+  
+ Employee(){		//Explicit Constructor
+   Emp_Id=0;
+   Name="Invaild Name";
+   City="Invaild City";
+  }
+  Employee(int empId,String name,String city){         //Paramiterized Constructor
+    this.Emp_Id=empId;
+	this.Name=name;
+	this.City=city;
+   }
+ }
+ 
+ // Calling Part
+====================================================================================
+====================================================================================
+ 
+class Test{
+ public static void main(String[] arg){
+    Employee obj1= new Employee(1001,"Venkat","Manglore");
+	System.out.println(+obj1.Emp_Id+ " "+obj1.Name+ " "+obj1.City);
+	
+	Employee obj2= new Employee(1002,"Parkash","Patna");
+	System.out.println(+obj2.Emp_Id+ " "+obj2.Name+ " "+obj2.City);
+	
+	Employee obj3= new Employee(1003,"Aman","Talwara");
+	System.out.println(+obj3.Emp_Id+ " "+obj3.Name+ " "+obj3.City);
+	
+	Employee obj4= new Employee(1004,"Manuvana","Vijaynagar");
+	System.out.println(+obj4.Emp_Id+ " "+obj4.Name+ " "+obj4.City);
+	
+	Employee obj5= new Employee();
+	System.out.println(+obj5.Emp_Id+ " "+obj5.Name+ " "+obj5.City);
+   }
+}
